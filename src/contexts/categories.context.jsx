@@ -10,6 +10,13 @@ const COLLECTIONS = gql`
   query {
     collections {
       id
+      title
+      items {
+        id
+        name
+        price
+        imageUrl
+      }
     }
   }
 `;
@@ -18,8 +25,8 @@ export const CategoriesProvider = ({ children }) => {
   const { loading, error, data } = useQuery(COLLECTIONS);
   const [categoriesMap, setCategoriesMap] = useState({});
 
-  // if (loading) return <p>Loading...</p>;
-  // if (error) return <p>Error : {error.message}</p>;
+  console.log("loading", loading);
+  console.log("data", data);
 
   console.log(data);
 
